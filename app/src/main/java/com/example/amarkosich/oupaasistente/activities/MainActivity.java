@@ -1,4 +1,4 @@
-package com.example.amarkosich.oupaasistente;
+package com.example.amarkosich.oupaasistente.activities;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.amarkosich.oupaasistente.R;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 public class MainActivity extends AppCompatActivity
