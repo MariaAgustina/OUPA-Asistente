@@ -23,6 +23,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             Log.i(TAG, "Message data payload: " + remoteMessage.getData());
 
             Intent sosAlertIntent = new Intent().setClassName("com.example.amarkosich.oupaasistente", "com.example.amarkosich.oupaasistente.activities.SOSAlarmActivity");
+            sosAlertIntent.putExtra("SOS_MESSAGE", remoteMessage.getData().get("message"));
             getApplicationContext().startActivity(sosAlertIntent);
 
             if (/* Check if data needs to be processed by long running job */ true) {
