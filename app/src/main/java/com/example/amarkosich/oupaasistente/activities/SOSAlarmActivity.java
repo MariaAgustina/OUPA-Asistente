@@ -22,11 +22,14 @@ public class SOSAlarmActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sosalarm);
 
-        String alarmMessage = getIntent().getStringExtra("SOS_MESSAGE");
-        if (alarmMessage != null) {
-            alarmText = findViewById(R.id.alarmMessageText);
-            alarmText.setText(alarmMessage);
-        }
+        //TODO: uncomment for next release
+//        String alarmMessage = getIntent().getStringExtra("SOS_MESSAGE");
+//        if (alarmMessage != null) {
+//            alarmText = findViewById(R.id.alarmMessageText);
+//            alarmText.setText(alarmMessage);
+//        }
+
+        getSupportActionBar().hide();
 
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.alarm);
         mp.start();
