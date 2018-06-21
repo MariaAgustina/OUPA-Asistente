@@ -24,6 +24,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
             Intent sosAlertIntent = new Intent().setClassName("com.example.amarkosich.oupaasistente", "com.example.amarkosich.oupaasistente.activities.SOSAlarmActivity");
             sosAlertIntent.putExtra("SOS_MESSAGE", remoteMessage.getData().get("message"));
+            sosAlertIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             getApplicationContext().startActivity(sosAlertIntent);
 
             if (/* Check if data needs to be processed by long running job */ true) {

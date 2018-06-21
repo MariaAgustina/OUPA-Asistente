@@ -6,4 +6,5 @@
     <color name="sosAlert">#ff3745</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
+    <color name="sos_background">#d2d2d2</color>
 </resources>
