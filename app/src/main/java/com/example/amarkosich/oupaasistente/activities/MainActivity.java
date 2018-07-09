@@ -1,10 +1,8 @@
 package com.example.amarkosich.oupaasistente.activities;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -15,7 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.amarkosich.oupaasistente.R;
-import com.example.amarkosich.oupaasistente.UserManager;
+import com.example.amarkosich.oupaasistente.UserSessionManager;
 import com.example.amarkosich.oupaasistente.services.UserService;
 import com.google.firebase.iid.FirebaseInstanceId;
 
@@ -23,16 +21,16 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private UserService userService;
+    private UserSessionManager userSessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //create session for a default user
-        UserManager.getInstance().logUser();
-
         userService = new UserService();
         userService.updateDeviceToken(FirebaseInstanceId.getInstance().getToken());
+
+        userSessionManager = new UserSessionManager(this);
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -66,21 +64,15 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+
+        menu.getItem(0).setTitle(userSessionManager.getFullName());
+        menu.getItem(1).setIcon(ContextCompat.getDrawable(this, R.drawable.close));
+
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
         return super.onOptionsItemSelected(item);
     }
 
