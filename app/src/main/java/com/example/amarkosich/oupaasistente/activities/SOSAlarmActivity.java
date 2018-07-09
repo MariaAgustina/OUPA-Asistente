@@ -22,12 +22,11 @@ public class SOSAlarmActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sosalarm);
 
-        //TODO: uncomment for next release
-//        String alarmMessage = getIntent().getStringExtra("SOS_MESSAGE");
-//        if (alarmMessage != null) {
-//            alarmText = findViewById(R.id.alarmMessageText);
-//            alarmText.setText(alarmMessage);
-//        }
+        String alarmMessage = getIntent().getStringExtra("SOS_MESSAGE");
+        if (alarmMessage != null) {
+            alarmText = findViewById(R.id.alarmMessageText);
+            alarmText.setText(alarmMessage);
+        }
 
         getSupportActionBar().hide();
 
