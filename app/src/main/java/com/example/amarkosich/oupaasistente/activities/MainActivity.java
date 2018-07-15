@@ -1,5 +1,6 @@
 package com.example.amarkosich.oupaasistente.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,9 +14,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.example.amarkosich.oupaasistente.R;
 import com.example.amarkosich.oupaasistente.UserManager;
+import com.example.amarkosich.oupaasistente.pillbox.PillboxActivity;
 import com.example.amarkosich.oupaasistente.services.UserService;
 import com.google.firebase.iid.FirebaseInstanceId;
 
@@ -44,12 +48,26 @@ public class MainActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+        
+        attachEvents();
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         Log.i(getClass().getCanonicalName(), "Firebase token: " + FirebaseInstanceId.getInstance().getToken());
 
+    }
+
+    private void attachEvents() {
+
+        Button pillboxButton = findViewById(R.id.pills);
+        pillboxButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent pillboxIntent = new Intent(MainActivity.this, PillboxActivity.class);
+                MainActivity.this.startActivity(pillboxIntent);
+            }
+        });
     }
 
     @Override

@@ -7,4 +7,23 @@
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
     <color name="sos_background">#d2d2d2</color>
+    <color name="yellow">#ffd180</color>
+    <color name="blue">#6497b1</color>
+    <color name="lightbluetransparent">#c000b8d4</color>
+    <color name="redparent">#a4d50000</color>
+    <color name="bluetransparent">#b901579b</color>
+    <color name="greenMaterial">#009688</color>
+    <color name="panic">#ff0004</color>
+    <color name="green">#81c784</color>
+    <color name="lightblue">#00acc1</color>
+    <color name="brown">#e57373</color>
+    <color name="midblue">#6668e9</color>
+
+    <!--colores pastillero-->
+    <color name="p_notTakenText">#1a237e</color>
+    <color name="p_notTakenBg">#62d9919e</color>
+    <color name="p_futureText">#1a237e</color>
+    <color name="p_futureBg">#b3fff176</color>
+    <color name="p_takenText">#1a237e</color>
+    <color name="p_takenBg">#b8bbdefb</color>
 </resources>
