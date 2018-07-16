@@ -13,14 +13,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Button;
 
 import com.example.amarkosich.oupaasistente.R;
 import com.example.amarkosich.oupaasistente.UserSessionManager;
 import com.example.amarkosich.oupaasistente.model.UserLogged;
+import com.example.amarkosich.oupaasistente.pillbox.PillboxActivity;
 import com.example.amarkosich.oupaasistente.services.UserService;
 import com.google.firebase.iid.FirebaseInstanceId;
 
@@ -99,6 +100,15 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "aun no hago nada :(", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        LinearLayout pillbox = findViewById(R.id.pillbox_action);
+        pillbox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent pillboxIntent = new Intent(MainActivity.this, PillboxActivity.class);
+                MainActivity.this.startActivity(pillboxIntent);
             }
         });
     }
