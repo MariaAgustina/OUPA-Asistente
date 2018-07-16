@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 
 import com.example.amarkosich.oupaasistente.activities.LoginActivity;
 import com.example.amarkosich.oupaasistente.model.UserLogged;
+import com.google.gson.Gson;
 
 public class UserSessionManager {
 
@@ -26,6 +27,10 @@ public class UserSessionManager {
     // All Shared Preferences Keys
     public static final String IS_USER_LOGIN = "isUserLoggedIn";
 
+    // All Shared Preferences Keys
+    public static final String OUPA_ASSISTED = "oupsAssisted";
+    public static final String OUPA_LOGGED = "oupaLogged";
+
     public static final String KEY_FIRST_NAME = "firstName";
     public static final String KEY_LAST_NAME = "lastName";
     public static final String KEY_TOKEN = "accessToken";
@@ -41,9 +46,19 @@ public class UserSessionManager {
     public void saveUserLogged(UserLogged userLogged, String accessToken){
         editor.putBoolean(IS_USER_LOGIN, true);
         // Storing name in preferences
-        editor.putString(KEY_FIRST_NAME, userLogged.firstName);
-        editor.putString(KEY_LAST_NAME, userLogged.lastName);
+        Gson gson = new Gson();
+        String userAsJson = gson.toJson(userLogged);
+        editor.putString(OUPA_LOGGED, userAsJson);
         editor.putString(KEY_TOKEN, accessToken);
+
+        // commit changes
+        editor.commit();
+    }
+
+    public void saveOupaAssisted(UserLogged userLogged) {
+        Gson gson = new Gson();
+        String userAsJson = gson.toJson(userLogged);
+        editor.putString(OUPA_ASSISTED, userAsJson);
 
         // commit changes
         editor.commit();
@@ -54,10 +69,21 @@ public class UserSessionManager {
         return accessToken;
     }
 
-    public String getFullName() {
-        String name = pref.getString(KEY_FIRST_NAME, null);
-        String lastName = pref.getString(KEY_LAST_NAME, null);
-        return name + " " + lastName;
+    public UserLogged getOupaAssisted() {
+        Gson gson = new Gson();
+        String userAsJson = pref.getString(OUPA_ASSISTED, null);
+        return gson.fromJson(userAsJson, UserLogged.class);
+
+    }
+
+    public boolean isDoctor() {
+        return "DoctorUser".equals(getUserLogged().type);
+    }
+
+    public UserLogged getUserLogged() {
+        Gson gson = new Gson();
+        String userAsJson = pref.getString(OUPA_LOGGED, null);
+        return gson.fromJson(userAsJson, UserLogged.class);
     }
 
     public boolean isUserLoggedIn(){

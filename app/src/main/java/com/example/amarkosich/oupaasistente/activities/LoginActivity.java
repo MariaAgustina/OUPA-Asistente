@@ -127,14 +127,12 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void onSuccess(UserLogged userLogged, String accessToken) {
-        Intent mainActivityIntent = new Intent(LoginActivity.this, MainActivity.class);
+        Intent mainActivityIntent = new Intent(LoginActivity.this, OupaSelectorActivity.class);
+        mainActivityIntent.putExtra("ACTIVITY_FROM", "LOGIN");
 
         UserSessionManager userSession = new UserSessionManager(this.getApplicationContext());
         userSession.saveUserLogged(userLogged, accessToken);
 
-        String welcome = String.format("Bienvenido %s %s!", userLogged.firstName, userLogged.lastName);
-
-        mainActivityIntent.putExtra("WELCOME", welcome);
         startActivity(mainActivityIntent);
         finish();
     }
