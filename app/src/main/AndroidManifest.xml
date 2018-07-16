@@ -34,6 +34,16 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".contacts.ContactActivity" />
+        <activity android:name=".contacts.NewContact2" />
+        <activity android:name=".contacts.NewContact4" />
+
+        <activity
+            android:name=".contacts.NewContact"
+            android:label="New Contact Activity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".activities.LoginActivity"
             android:label="@string/app_name"

@@ -1,6 +1,8 @@
 package com.example.amarkosich.oupaasistente.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.*;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.support.design.widget.NavigationView;
@@ -11,9 +13,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import com.example.amarkosich.oupaasistente.R;
 import com.example.amarkosich.oupaasistente.UserSessionManager;
+import com.example.amarkosich.oupaasistente.contacts.ContactActivity;
 import com.example.amarkosich.oupaasistente.services.UserService;
 import com.google.firebase.iid.FirebaseInstanceId;
 
@@ -37,7 +42,7 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
-        DrawerLayout drawer =  findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
@@ -45,6 +50,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        attachEvents();
 
         Log.i(getClass().getCanonicalName(), "Firebase token: " + FirebaseInstanceId.getInstance().getToken());
 
@@ -99,5 +105,17 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void attachEvents() {
+
+        LinearLayout phoneLayout = findViewById(R.id.phone_layout);
+        phoneLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent phoneActivity = new Intent(getApplicationContext(), ContactActivity.class);
+                startActivity(phoneActivity);
+            }
+        });
     }
 }
