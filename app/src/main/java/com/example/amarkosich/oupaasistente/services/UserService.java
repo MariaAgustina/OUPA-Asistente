@@ -1,6 +1,5 @@
 package com.example.amarkosich.oupaasistente.services;
 
-import android.os.UserManager;
 import android.support.annotation.NonNull;
 
 import com.example.amarkosich.oupaasistente.App;
@@ -12,6 +11,8 @@ import com.example.amarkosich.oupaasistente.model.request.UserSessionRequest;
 import com.example.amarkosich.oupaasistente.networking.ApiClient;
 import com.example.amarkosich.oupaasistente.networking.OupaApi;
 import com.google.firebase.iid.FirebaseInstanceId;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -40,6 +41,10 @@ public class UserService {
         return oupaApi.getUserLogged(accessToken);
     }
 
+    public Call<List<UserLogged>> getOupas(String accessToken) {
+        return oupaApi.getOupas(accessToken);
+    }
+
     @NonNull
     private UserSessionRequest getUserSessionRequest(String email, String password, String deviceToken) {
         UserSessionRequest userSessionRequest = new UserSessionRequest();
@@ -52,7 +57,6 @@ public class UserService {
     }
 
     public void updateDeviceToken(String deviceToken) {
-
         UpdateDeviceTokenRequest.User user = new UpdateDeviceTokenRequest.User();
         user.deviceToken = deviceToken;
 
@@ -63,14 +67,10 @@ public class UserService {
         oupaApi.updateDeviceToken(accessToken, updateDeviceTokenRequest)
                 .enqueue(new Callback<Void>() {
                     @Override
-                    public void onResponse(Call<Void> call, Response<Void> response) {
-
-                    }
+                    public void onResponse(Call<Void> call, Response<Void> response) {}
 
                     @Override
-                    public void onFailure(Call<Void> call, Throwable t) {
-
-                    }
+                    public void onFailure(Call<Void> call, Throwable t) {}
                 });
     }
 }
