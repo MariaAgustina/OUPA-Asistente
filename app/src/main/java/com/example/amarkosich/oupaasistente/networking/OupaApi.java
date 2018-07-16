@@ -8,6 +8,7 @@ import com.example.amarkosich.oupaasistente.model.request.UpdateDeviceTokenReque
 import com.example.amarkosich.oupaasistente.model.request.UserSessionRequest;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -32,5 +33,8 @@ public interface OupaApi {
 
     @GET("/contacts")
     Call<ArrayList<ContactResponse>> getContacts(@Header("Authorization") String accessToken);
+
+    @GET("/users/associated_oupas")
+    Call<List<UserLogged>> getOupas(@Header("Authorization") String accessToken);
 
 }
