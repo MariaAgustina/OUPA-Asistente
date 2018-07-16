@@ -107,13 +107,7 @@ public class PillboxActivity extends AppCompatActivity implements PillClient{
         try {
             super.onActivityResult(requestCode, resultCode, data);
 
-            if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
-                Pill pill = (Pill) data.getSerializableExtra("pill");
-                pillService.updatePillDrinked(getApplicationContext(), pill);
-                pillsArray.set(pillPosition, pill);
-                displayPills();
-
-            }else if(requestCode == REQUEST_CODE && resultCode == RESULT_CODE_ADDED_PILL){
+            if(requestCode == REQUEST_CODE && resultCode == RESULT_CODE_ADDED_PILL){
                 ProgressBar loadingView = (ProgressBar) findViewById(R.id.loading);
                 loadingView.setVisibility(View.VISIBLE);
                 this.pillsArray= new ArrayList<Pill>();

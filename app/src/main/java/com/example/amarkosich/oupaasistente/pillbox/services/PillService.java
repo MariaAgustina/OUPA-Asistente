@@ -3,7 +3,7 @@ package com.example.amarkosich.oupaasistente.pillbox.services;
 import android.content.Context;
 import android.util.Log;
 
-import com.example.amarkosich.oupaasistente.UserManager;
+import com.example.amarkosich.oupaasistente.UserSessionManager;
 import com.example.amarkosich.oupaasistente.networking.ApiClient;
 import com.example.amarkosich.oupaasistente.networking.OupaApi;
 import com.example.amarkosich.oupaasistente.pillbox.model.OUPADateFormat;
@@ -40,7 +40,12 @@ public class PillService {
         pillSerialized.personal_medicine_reminder.date = sdf.format(pill.date);
         pillSerialized.personal_medicine_reminder.time = hourdf.format(pill.date);
 
-        oupaApi.createPill("eyJhbGciOiJIUzI1NiJ9.eyJlbGRlcmx5X3VzZXJfaWQiOjIsInZlcmlmaWNhdGlvbl9jb2RlIjoiVF8xX01hQjdndU5Cb2lTLXN3TndnX3l4Qm5SOWVDenN4amZna0NnLTdKekJ6X3hZZHluVlgta0d5UjZqSGtLeiIsInJlbmV3X2lkIjoicjlOdFRpRTRvNk5NdmtFTmhMeVRzRUNoYmNwMVpCMkEiLCJtYXhpbXVtX3VzZWZ1bF9kYXRlIjoxNTMyMDEwNjYzLCJleHBpcmF0aW9uX2RhdGUiOjE1MzIwMTA2NjMsIndhcm5pbmdfZXhwaXJhdGlvbl9kYXRlIjoxNTI5NDM2NjYzfQ.Un5EecwJ1i-bgaZf6j1TEYHinX9ni0-jb3h6m_EdgOU","application/json",pillSerialized).enqueue(new Callback<PillResponse>() {
+        UserSessionManager userSessionManager = new UserSessionManager(client.getApplicationContext());
+
+        String accessToken=userSessionManager.getAuthorizationToken();
+        String oupaUserId=userSessionManager.getOupaAssisted().id;
+
+        oupaApi.createPill(accessToken,"application/json",pillSerialized).enqueue(new Callback<PillResponse>() {
 
             @Override
             public void onResponse(Call<PillResponse> call, Response<PillResponse> response) {
@@ -48,7 +53,7 @@ public class PillService {
                     Log.i("PILLSERVICE", "NEW PILL CREATED!!!");
                     client.onResponseSuccess(response.body());
                 } else {
-                    Log.e("PILLSERVICE", response.body().toString());
+                    Log.e("PILLSERVICE", "ERROR CREATING PILL, CODE:"+response.code());
                     client.onResponseError();
                 }
             }
@@ -62,7 +67,13 @@ public class PillService {
     }
 
     public void getPillsForToday(final PillClient delegate) {
-        oupaApi.getPillsForToday("eyJhbGciOiJIUzI1NiJ9.eyJlbGRlcmx5X3VzZXJfaWQiOjIsInZlcmlmaWNhdGlvbl9jb2RlIjoiVF8xX01hQjdndU5Cb2lTLXN3TndnX3l4Qm5SOWVDenN4amZna0NnLTdKekJ6X3hZZHluVlgta0d5UjZqSGtLeiIsInJlbmV3X2lkIjoicjlOdFRpRTRvNk5NdmtFTmhMeVRzRUNoYmNwMVpCMkEiLCJtYXhpbXVtX3VzZWZ1bF9kYXRlIjoxNTMyMDEwNjYzLCJleHBpcmF0aW9uX2RhdGUiOjE1MzIwMTA2NjMsIndhcm5pbmdfZXhwaXJhdGlvbl9kYXRlIjoxNTI5NDM2NjYzfQ.Un5EecwJ1i-bgaZf6j1TEYHinX9ni0-jb3h6m_EdgOU").enqueue(new Callback<ArrayList<PillResponse>>() {
+
+        UserSessionManager userSessionManager = new UserSessionManager(delegate.getApplicationContext());
+
+        String accessToken=userSessionManager.getAuthorizationToken();
+        String oupaUserId=userSessionManager.getOupaAssisted().id;
+
+        oupaApi.getPillsForToday(accessToken,oupaUserId).enqueue(new Callback<ArrayList<PillResponse>>() {
 
             @Override
             public void onResponse(Call<ArrayList<PillResponse>> call, Response<ArrayList<PillResponse>> response) {
@@ -92,26 +103,5 @@ public class PillService {
         });
     }
 
-    public void updatePillDrinked(Context applicationContext, final Pill pill){
-        PillTakenSerialized pillTakenSerialized = new PillTakenSerialized();
-        pillTakenSerialized.personal_medicine_reminder = new PillTakenSerialized.Personal_medicine_reminder();
-        pillTakenSerialized.personal_medicine_reminder.taken = pill.drinked;
 
-        oupaApi.drinkedPill(UserManager.getInstance().getAuthorizationToken(),pill.id,pillTakenSerialized).enqueue(new Callback<PillResponse>() {
-
-            @Override
-            public void onResponse(Call<PillResponse> call, Response<PillResponse> response) {
-                if (response.code() > 199 && response.code() < 300) {
-                    Log.i("PILLSERVICE", "PILL " +pill.id+" UPDATED!!!");
-                } else {
-                    Log.e("PILLSERVICE", response.body().toString());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<PillResponse> call, Throwable t) {
-                Log.e("PILLSERVICE", t.getMessage());
-            }
-        });
-    }
 }

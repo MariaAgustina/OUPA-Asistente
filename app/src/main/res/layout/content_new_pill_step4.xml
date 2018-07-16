@@ -47,7 +47,6 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="Oupa le avisará si X no ha tomado esta pastilla"
             android:textSize="25sp" />
 
         <Button

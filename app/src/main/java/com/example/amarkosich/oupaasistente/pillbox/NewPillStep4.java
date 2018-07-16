@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.amarkosich.oupaasistente.R;
+import com.example.amarkosich.oupaasistente.UserSessionManager;
 import com.example.amarkosich.oupaasistente.pillbox.model.Pill;
 
 
@@ -31,6 +32,12 @@ public class NewPillStep4 extends AppCompatActivity {
 
         TextView pillName = findViewById(R.id.pill_name);
         pillName.setText(pill.name);
+
+        UserSessionManager userSessionManager = new UserSessionManager(this.getApplicationContext());
+
+        String assistedName=userSessionManager.getOupaAssisted().firstName+" "+userSessionManager.getOupaAssisted().lastName;
+        TextView pillText = findViewById(R.id.pill_notification);
+        pillText.setText("Oupa le avisará si "+assistedName+" no ha tomado esta pastilla");
 
     }
 

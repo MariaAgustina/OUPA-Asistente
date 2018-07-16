@@ -9,8 +9,7 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        android:id="@+id/AppBarLayout">
+        android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -21,117 +20,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/constraintLayoutTitle"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_anchor="@+id/AppBarLayout"
-        app:layout_anchorGravity="bottom"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/profile_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/heart_pulse"
-            app:civ_border_color="#FF000000"
-            app:civ_border_width="2dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/oupausername"
-            android:layout_width="0dp"
-            android:layout_height="93dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Nombre del Usuario Oupa"
-            android:textSize="25sp"
-            app:layout_constraintBottom_toTopOf="@+id/pills"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/profile_image"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <Button
-            android:id="@+id/pills"
-            android:layout_width="fill_parent"
-            android:layout_height="74dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:background="@color/bluetransparent"
-            android:drawableLeft="@drawable/pill_small"
-            android:paddingBottom="16dp"
-            android:paddingLeft="16dp"
-            android:paddingTop="10dp"
-            android:text="Medicamentos"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profile_image" />
-
-        <Button
-            android:id="@+id/calendar"
-            android:layout_width="fill_parent"
-            android:layout_height="74dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@color/bluetransparent"
-            android:drawableLeft="@drawable/pill_small"
-            android:paddingBottom="16dp"
-            android:paddingLeft="16dp"
-            android:paddingTop="10dp"
-            android:text="Eventos"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pills" />
-
-        <Button
-            android:id="@+id/contacts"
-            android:layout_width="fill_parent"
-            android:layout_height="74dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@color/bluetransparent"
-            android:drawableLeft="@drawable/telefono_small"
-            android:paddingBottom="16dp"
-            android:paddingLeft="16dp"
-            android:paddingTop="10dp"
-            android:text="Contactos"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/calendar" />
-
-
-    </android.support.constraint.ConstraintLayout>
-
-
-
+    <include layout="@layout/content_main" />
 
 </android.support.design.widget.CoordinatorLayout>
