@@ -132,6 +132,7 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.logout) {
             userSessionManager.logout();
+            finish();
             return true;
         }
 
