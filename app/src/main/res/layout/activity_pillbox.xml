@@ -9,27 +9,26 @@
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/constraintLayoutTitle"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/newPillTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="13dp"
-            android:layout_marginRight="13dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:gravity="center"
             android:text="@string/today_pills_title"
             android:textColor="@color/blue"
             android:textSize="35sp"
             android:textStyle="normal|bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.039"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-    </android.support.constraint.ConstraintLayout>
 
         <ProgressBar
             android:id="@+id/loading"
@@ -40,32 +39,16 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <include
-            layout="@layout/content_pillbox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_anchor="@+id/constraintLayoutTitle"
-            app:layout_anchorGravity="bottom|left"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/constraintLayoutButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:orientation="vertical">
-
         <Button
             android:id="@+id/btn_add_pill"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="10dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
             android:layout_weight="1"
             android:background="@color/greenMaterial"
             android:text="@string/add_new_pill"
@@ -74,7 +57,27 @@
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <ListView
+            android:id="@+id/list_of_pills"
+            android:layout_width="380dp"
+            android:layout_height="0dp"
+            android:layout_above="@+id/btn_add_pill"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_add_pill"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newPillTitle" />
 
     </android.support.constraint.ConstraintLayout>
 

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".pillbox.PillboxActivity"
-    tools:showIn="@layout/activity_pillbox">
+    tools:showIn="@layout/activity_pillbox3">
 
     <ListView
         android:id="@+id/list_of_pills"

@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -117,6 +116,7 @@ public class PillboxActivity extends AppCompatActivity implements PillClient{
             }else if(requestCode == REQUEST_CODE && resultCode == RESULT_CODE_ADDED_PILL){
                 ProgressBar loadingView = (ProgressBar) findViewById(R.id.loading);
                 loadingView.setVisibility(View.VISIBLE);
+                this.pillsArray= new ArrayList<Pill>();
                 pillService.getPillsForToday(this);
             }
         } catch (Exception ex) {
