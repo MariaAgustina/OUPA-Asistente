@@ -5,6 +5,19 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="title_activity_pillbox">PillboxActivity</string>
+    <string name="today_pills_title">Medicamentos</string>
+    <string name="add_new_pill">Agregar</string>
+    <string name="new_pill_title">Nuevo medicamento</string>
+    <string name="save_button">Guardar</string>
+    <string name="title_activity_new_pill_step1">Nuevo Medicamento</string>
+    <string name="title_activity_new_pill_step4">NewPillStep4</string>
+    <string name="select_hour">Seleccionar Fecha y Hora</string>
+    <string name="selected_date">Fecha y hora seleccionada</string>
+    <string name="new_pill_name">Nombre:</string>
+    <string name="add_pill_description">Se agregará la pastilla</string>
+    <string name="back_button">Volver</string>
+
 
     <!-- Strings related to login -->
     <string name="prompt_email">Correo electrónico</string>
