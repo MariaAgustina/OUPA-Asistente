@@ -22,8 +22,9 @@ public class ContactService {
         oupaApi = ApiClient.getInstance().getOupaClient();
     }
 
-    public Call<ContactResponse> createContact(String accessToken, String s, ContactSerialized contactSerialized) {
-        return oupaApi.createContact(accessToken, s, contactSerialized);
+    public Call<ContactResponse> createContact(String accessToken, String s, ContactSerialized contactSerialized, String oupaUserId) {
+
+        return oupaApi.createContact(accessToken, s, oupaUserId, contactSerialized);
     }
 
     public void createNewContact(final Contact contact, final NewContact4 delegate) {
@@ -34,9 +35,12 @@ public class ContactService {
         contactSerialized.contact.phoneNumber = contact.phoneNumber;
         contactSerialized.contact.picture = contact.picture;
 
-        String accessToken = new UserSessionManager(delegate.getApplicationContext()).getAuthorizationToken();
+        UserSessionManager userSessionManager = new UserSessionManager(delegate.getApplicationContext());
 
-        createContact(accessToken,"application/json",contactSerialized).enqueue(new Callback<ContactResponse>() {
+        String accessToken = userSessionManager.getAuthorizationToken();
+        String oupaUserId = userSessionManager.getOupaAssisted().id;
+
+        createContact(accessToken,"application/json",contactSerialized, oupaUserId).enqueue(new Callback<ContactResponse>() {
 
             @Override
             public void onResponse(Call<ContactResponse> call, Response<ContactResponse> response) {
@@ -58,8 +62,13 @@ public class ContactService {
     }
 
     public void getContacts(final ContactClient delegate) {
-        String accessToken = new UserSessionManager(delegate.getApplicationContext()).getAuthorizationToken();
-        oupaApi.getContacts(accessToken).enqueue(new Callback<ArrayList<ContactResponse>>() {
+
+        UserSessionManager userSessionManager = new UserSessionManager(delegate.getApplicationContext());
+
+        String accessToken = userSessionManager.getAuthorizationToken();
+        String oupaUserId = userSessionManager.getOupaAssisted().id;
+
+        oupaApi.getContacts(accessToken, oupaUserId).enqueue(new Callback<ArrayList<ContactResponse>>() {
             @Override
             public void onResponse(Call<ArrayList<ContactResponse>> call, Response<ArrayList<ContactResponse>> response) {
                 if (response.code() > 199 && response.code() < 300) {

@@ -31,11 +31,11 @@ public interface OupaApi {
     @GET("/users/logged_in")
     Call<UserLogged> getUserLogged(@Header("Authorization") String accessToken);
 
-    @POST("/contacts")
-    Call<ContactResponse> createContact(@Header("Authorization") String accessToken, @Header("Content-Type") String s, @Body ContactSerialized contactSerialized);
+    @POST("/users/{user_id}/contacts")
+    Call<ContactResponse> createContact(@Header("Authorization") String accessToken, @Header("Content-Type") String contentType, @Path("user_id") String oupaUserId, @Body ContactSerialized contactSerialized);
 
-    @GET("/contacts")
-    Call<ArrayList<ContactResponse>> getContacts(@Header("Authorization") String accessToken);
+    @GET("/users/{user_id}/contacts")
+    Call<ArrayList<ContactResponse>> getContacts(@Header("Authorization") String accessToken, @Path("user_id") String oupaUserId);
 
     @GET("/users/associated_oupas")
     Call<List<UserLogged>> getOupas(@Header("Authorization") String accessToken);
