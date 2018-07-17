@@ -26,7 +26,6 @@ import java.util.Date;
 public class PillboxActivity extends AppCompatActivity implements PillClient{
 
     private ArrayList<Pill> pillsArray;
-    private Integer pillPosition;
     private PillService pillService;
 
     public static final int REQUEST_CODE = 1;
@@ -59,19 +58,7 @@ public class PillboxActivity extends AppCompatActivity implements PillClient{
 
     private void setupInitials() {
         pillsArray = new ArrayList<Pill>();
-        /*Pill pill = new Pill();
-        pill.id="1";
-        pill.date = new Date();
-        pill.drinked=false;
-        pill.name="Sarasa";
 
-        pillsArray.add(pill);*/
-
-        /*displayPills();
-        ProgressBar loadingView = (ProgressBar) findViewById(R.id.loading);
-        loadingView.setVisibility(View.INVISIBLE);
-        Button btnAddPill = (Button) findViewById(R.id.btn_add_pill);
-        btnAddPill.setVisibility(View.VISIBLE);*/
         pillService.getPillsForToday(this);
 
     }
@@ -83,22 +70,6 @@ public class PillboxActivity extends AppCompatActivity implements PillClient{
         pillsList.setAdapter(pillAdapter);
         pillsList.setSelection(this.pillsArray.size());
 
-        /*pillsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            public void onItemClick(AdapterView<?> adapter, View view, int position, long arg) {
-
-                pillPosition = position;
-
-                Pill pill = pillsArray.get(position);
-                if (!pill.shouldBeDrinked()) {
-                    return;
-                }
-
-                //Intent intent = new Intent(PillboxActivity.this, DrinkedPillActivity.class);
-                //intent.putExtra("pill", pill);
-                //startActivityForResult(intent, REQUEST_CODE);
-            }
-        });*/
     }
 
 
@@ -136,7 +107,7 @@ public class PillboxActivity extends AppCompatActivity implements PillClient{
             pill.id = pillResponse.id;
 
             try {
-                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSS");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
                 Date parsedDate = dateFormat.parse(pillResponse.time);
                 pill.date = parsedDate;
             } catch (Exception e) { //this generic but you can control another types of exception

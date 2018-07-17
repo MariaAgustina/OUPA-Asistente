@@ -2,7 +2,6 @@ package com.example.amarkosich.oupaasistente.pillbox;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -97,7 +96,7 @@ public class NewPillStep1 extends AppCompatActivity implements PillClient{
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                         date.set(Calendar.HOUR_OF_DAY, hourOfDay);
                         date.set(Calendar.MINUTE, minute);
-                        Log.v("NEWPILLSTEP1", "The choosen one " + date.getTime());
+                        Log.v("NEWPILLSTEP1", "The chosen one " + date.getTime());
                         updateDate();
                     }
                 }, currentDate.get(Calendar.HOUR_OF_DAY), currentDate.get(Calendar.MINUTE), true).show();

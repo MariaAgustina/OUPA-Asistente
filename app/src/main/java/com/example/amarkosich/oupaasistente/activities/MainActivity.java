@@ -16,7 +16,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Button;
 
 import com.example.amarkosich.oupaasistente.R;
 import com.example.amarkosich.oupaasistente.UserSessionManager;
