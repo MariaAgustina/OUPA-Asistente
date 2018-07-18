@@ -22,9 +22,9 @@ public class ContactService {
         oupaApi = ApiClient.getInstance().getOupaClient();
     }
 
-    public Call<ContactResponse> createContact(String accessToken, String s, ContactSerialized contactSerialized, String oupaUserId) {
+    public Call<ContactResponse> createContact(String accessToken, String s, ContactSerialized contactSerialized) {
 
-        return oupaApi.createContact(accessToken, s, oupaUserId, contactSerialized);
+        return oupaApi.createContact(accessToken, s, contactSerialized);
     }
 
     public void createNewContact(final Contact contact, final NewContact4 delegate) {
@@ -38,9 +38,9 @@ public class ContactService {
         UserSessionManager userSessionManager = new UserSessionManager(delegate.getApplicationContext());
 
         String accessToken = userSessionManager.getAuthorizationToken();
-        String oupaUserId = userSessionManager.getOupaAssisted().id;
+//        String oupaUserId = userSessionManager.getOupaAssisted().id;
 
-        createContact(accessToken,"application/json",contactSerialized, oupaUserId).enqueue(new Callback<ContactResponse>() {
+        createContact(accessToken,"application/json",contactSerialized).enqueue(new Callback<ContactResponse>() {
 
             @Override
             public void onResponse(Call<ContactResponse> call, Response<ContactResponse> response) {
@@ -96,28 +96,4 @@ public class ContactService {
             }
         });
     }
-
-//    public void updatePillDrinked(Context applicationContext, final Pill pill){
-//        PillTakenSerialized pillTakenSerialized = new PillTakenSerialized();
-//        pillTakenSerialized.personal_medicine_reminder = new PillTakenSerialized.Personal_medicine_reminder();
-//        pillTakenSerialized.personal_medicine_reminder.taken = pill.drinked;
-//
-//        String accessToken = new UserSessionManager(applicationContext).getAuthorizationToken();
-//        oupaApi.drinkedPill(accessToken, pill.id, pillTakenSerialized).enqueue(new Callback<PillResponse>() {
-//
-//            @Override
-//            public void onResponse(Call<PillResponse> call, Response<PillResponse> response) {
-//                if (response.code() > 199 && response.code() < 300) {
-//                    Log.i("PILLSERVICE", "PILL " +pill.id+" UPDATED!!!");
-//                } else {
-//                    Log.e("PILLSERVICE", response.body().toString());
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<PillResponse> call, Throwable t) {
-//                Log.e("PILLSERVICE", t.getMessage());
-//            }
-//        });
-//    }
 }
