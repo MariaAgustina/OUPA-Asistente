@@ -1,5 +1,7 @@
 package com.example.amarkosich.oupaasistente.networking;
 
+import com.example.amarkosich.oupaasistente.contacts.services.ContactResponse;
+import com.example.amarkosich.oupaasistente.contacts.services.ContactSerialized;
 import com.example.amarkosich.oupaasistente.model.UserLogged;
 import com.example.amarkosich.oupaasistente.model.UserSession;
 import com.example.amarkosich.oupaasistente.model.request.UpdateDeviceTokenRequest;
@@ -28,6 +30,12 @@ public interface OupaApi {
 
     @GET("/users/logged_in")
     Call<UserLogged> getUserLogged(@Header("Authorization") String accessToken);
+
+    @POST("/contacts")
+    Call<ContactResponse> createContact(@Header("Authorization") String accessToken, @Header("Content-Type") String contentType, @Body ContactSerialized contactSerialized);
+
+    @GET("/users/{user_id}/contacts")
+    Call<ArrayList<ContactResponse>> getContacts(@Header("Authorization") String accessToken,  @Path("user_id") String oupaUserId);
 
     @GET("/users/associated_oupas")
     Call<List<UserLogged>> getOupas(@Header("Authorization") String accessToken);

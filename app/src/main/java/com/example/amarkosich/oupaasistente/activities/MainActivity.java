@@ -2,14 +2,14 @@ package com.example.amarkosich.oupaasistente.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.support.design.widget.NavigationView;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,10 +20,12 @@ import android.widget.Button;
 
 import com.example.amarkosich.oupaasistente.R;
 import com.example.amarkosich.oupaasistente.UserSessionManager;
+import com.example.amarkosich.oupaasistente.contacts.ContactActivity;
 import com.example.amarkosich.oupaasistente.model.UserLogged;
 import com.example.amarkosich.oupaasistente.pillbox.PillboxActivity;
 import com.example.amarkosich.oupaasistente.services.UserService;
 import com.google.firebase.iid.FirebaseInstanceId;
+
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -87,11 +89,13 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void setupActions() {
+
         LinearLayout contacts = findViewById(R.id.contacts_action);
         contacts.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "aun no hago nada :(", Toast.LENGTH_SHORT).show();
+            public void onClick(View view) {
+                Intent phoneActivity = new Intent(getApplicationContext(), ContactActivity.class);
+                startActivity(phoneActivity);
             }
         });
 
@@ -173,4 +177,5 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }
