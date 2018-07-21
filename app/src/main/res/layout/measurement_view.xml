@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    >
+
+    <TextView
+        android:id="@+id/measurementTime"
+        android:layout_width="174dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/measuremenValue"
+        app:layout_constraintTop_toBottomOf="@+id/measurementTitle" />
+
+    <TextView
+        android:id="@+id/measurementTitle"
+        android:layout_width="275dp"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/measurementImage"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/measuremenValue"
+        android:layout_width="87dp"
+        android:layout_height="54dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/measurementImage"
+        app:layout_constraintTop_toBottomOf="@+id/measurementTitle" />
+
+    <ImageView
+        android:id="@+id/measurementImage"
+        android:layout_width="70dp"
+        android:layout_height="69dp"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_vertical|end"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/temperature"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+</android.support.constraint.ConstraintLayout>

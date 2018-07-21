@@ -21,6 +21,7 @@ import android.widget.Button;
 import com.example.amarkosich.oupaasistente.R;
 import com.example.amarkosich.oupaasistente.UserSessionManager;
 import com.example.amarkosich.oupaasistente.contacts.ContactActivity;
+import com.example.amarkosich.oupaasistente.measurements.MeasurementListActivity;
 import com.example.amarkosich.oupaasistente.model.UserLogged;
 import com.example.amarkosich.oupaasistente.pillbox.PillboxActivity;
 import com.example.amarkosich.oupaasistente.services.UserService;
@@ -103,7 +104,8 @@ public class MainActivity extends AppCompatActivity
         medicine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "aun no hago nada :(", Toast.LENGTH_SHORT).show();
+                Intent measurementIntent = new Intent(MainActivity.this, MeasurementListActivity.class);
+                MainActivity.this.startActivity(measurementIntent);
             }
         });
 

@@ -28,4 +28,18 @@
     <string name="error_invalid_password">La contraseña es muy corta</string>
     <string name="error_incorrect_password">La contraseña es incorrecta</string>
     <string name="error_field_required">Campo requerido</string>
+
+    <!-- Measurementts -->
+    <string name="title_activity_measurement_list">MeasurementListActivity</string>
+    <string name="title_activity_new_measurement_step1">NewMeasurementStep1</string>
+    <string name="title_activity_new_measurement_step2">NewMeasurementStep2</string>
+
+    <string name="title_measurement_step1">Tipo de medición</string>
+    <string name="measurement_type_temperature">Temperatura</string>
+    <string name="measurement_type_glucose">Glucosa</string>
+    <string name="measurement_type_preasure">Presión</string>
+    <string name="title_measurement_step2">Resultado obtenido:</string>
+
+    <string name="measurement_list_title">Mediciones</string>
+
 </resources>

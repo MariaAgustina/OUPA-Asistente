@@ -2,6 +2,7 @@ package com.example.amarkosich.oupaasistente.networking;
 
 import com.example.amarkosich.oupaasistente.contacts.services.ContactResponse;
 import com.example.amarkosich.oupaasistente.contacts.services.ContactSerialized;
+import com.example.amarkosich.oupaasistente.measurements.services.MeasurementSerialized;
 import com.example.amarkosich.oupaasistente.model.UserLogged;
 import com.example.amarkosich.oupaasistente.model.UserSession;
 import com.example.amarkosich.oupaasistente.model.request.UpdateDeviceTokenRequest;
@@ -45,4 +46,12 @@ public interface OupaApi {
 
     @POST("/personal_medicine_reminder")
     Call<PillResponse> createPill(@Header("Authorization") String accessToken, @Header("Content-Type") String content_type, @Body PillSerialized pillSerialized);
+
+
+    @POST("/measurements")
+    Call<MeasurementSerialized> createMeasurement(@Header("Authorization") String accessToken, @Header("Content-Type") String content_type, @Body MeasurementSerialized pillSerialized);
+
+    @GET("/users/{user_id}/measurements")
+    Call<ArrayList<MeasurementSerialized.Measurement>> getMeasurements(@Header("Authorization") String accessToken, @Path("user_id") String oupaUserId);
+
 }
