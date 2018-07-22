@@ -92,14 +92,21 @@ public class MainActivity extends AppCompatActivity
     private void setupActions() {
 
         LinearLayout contacts = findViewById(R.id.contacts_action);
-        contacts.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent phoneActivity = new Intent(getApplicationContext(), ContactActivity.class);
-                startActivity(phoneActivity);
-            }
-        });
 
+
+
+        if (userSessionManager.isDoctor()){
+            contacts.setVisibility(View.GONE);
+        }
+        else {
+            contacts.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent phoneActivity = new Intent(getApplicationContext(), ContactActivity.class);
+                    startActivity(phoneActivity);
+                }
+            });
+        }
         LinearLayout medicine = findViewById(R.id.medicine_action);
         medicine.setOnClickListener(new View.OnClickListener() {
             @Override
