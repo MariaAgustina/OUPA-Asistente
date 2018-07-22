@@ -1,9 +1,13 @@
 package com.example.amarkosich.oupaasistente.pillbox;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
 import android.view.View;
 
 import android.widget.TextView;
@@ -37,7 +41,13 @@ public class NewPillStep4 extends AppCompatActivity {
 
         String assistedName=userSessionManager.getOupaAssisted().firstName+" "+userSessionManager.getOupaAssisted().lastName;
         TextView pillText = findViewById(R.id.pill_notification);
-        pillText.setText("Oupa le avisará si "+assistedName+" no ha tomado esta pastilla");
+
+
+        String normalText = "a la lista de medicinas a tomar de ";
+
+        SpannableString str = new SpannableString(normalText+assistedName);
+        str.setSpan(new StyleSpan(Typeface.BOLD), normalText.length(), normalText.length()+assistedName.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        pillText.setText(str);
 
     }
 
