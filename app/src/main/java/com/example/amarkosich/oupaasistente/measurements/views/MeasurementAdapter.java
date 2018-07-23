@@ -47,11 +47,15 @@ public class MeasurementAdapter extends ArrayAdapter<Measurement> {
             imageView.setImageResource(R.drawable.glucose);
             convertView.setBackgroundColor(ContextCompat.getColor(super.getContext(),R.color.midblue));
 
-        }else{
+        }else if(measurement.measurement_type.equals("preasure")){
             titleTextView.setText("Presión");
             imageView.setImageResource(R.drawable.preasure);
             convertView.setBackgroundColor(ContextCompat.getColor(super.getContext(),R.color.greenMaterial));
 
+        }else {
+            titleTextView.setText("Pulsaciones");
+            imageView.setImageResource(R.drawable.heart_rate);
+            convertView.setBackgroundColor(ContextCompat.getColor(super.getContext(),R.color.green));
         }
 
         // Return the completed view to render on screen
