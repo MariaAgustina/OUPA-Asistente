@@ -83,7 +83,7 @@
                     android:layout_height="70dp"
                     android:layout_marginRight="10dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_menu_manage" />
+                    android:src="@drawable/telefono" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -126,7 +126,7 @@
                     android:layout_height="70dp"
                     android:layout_marginRight="10dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_menu_camera" />
+                    android:src="@drawable/measurements" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
