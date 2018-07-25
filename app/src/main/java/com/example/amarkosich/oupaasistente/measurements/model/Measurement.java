@@ -12,7 +12,7 @@ public class Measurement implements Serializable{
     public Date date;
 
     public String dateSring() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM hh:mm");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM HH:mm");
         return dateFormat.format(this.date);
     }
 

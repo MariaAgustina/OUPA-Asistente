@@ -64,7 +64,7 @@ public class MeasurementListActivity extends AppCompatActivity {
             measurement.notes = measurementResponse.notes;
 
             try {
-                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSS");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
                 Date parsedDate = dateFormat.parse(measurementResponse.date);
                 measurement.date = parsedDate;
             } catch (Exception e) { //this generic but you can control another types of exception
