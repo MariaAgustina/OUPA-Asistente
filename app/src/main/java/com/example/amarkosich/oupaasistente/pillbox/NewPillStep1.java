@@ -87,12 +87,13 @@ public class NewPillStep1 extends AppCompatActivity implements PillClient{
 
     public void showDateTimePicker(View view) {
         final Calendar currentDate = Calendar.getInstance();
-;
+
 
         new DatePickerDialog(NewPillStep1.this , new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 date.set(year, monthOfYear, dayOfMonth);
+                view.setMinDate(System.currentTimeMillis() - 1000);
                 new TimePickerDialog(NewPillStep1.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
@@ -104,7 +105,6 @@ public class NewPillStep1 extends AppCompatActivity implements PillClient{
                 }, currentDate.get(Calendar.HOUR_OF_DAY), currentDate.get(Calendar.MINUTE), true).show();
             }
         }, currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DATE)).show();
-
     }
 
     public void onResponseSuccess(Object responseBody) {
