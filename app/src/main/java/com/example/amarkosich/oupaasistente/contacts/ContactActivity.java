@@ -71,6 +71,10 @@ public class ContactActivity extends AppCompatActivity implements ContactClient 
         contactList.setAdapter(contactAdapter);
         contactList.setSelection(this.contactArray.size());
 
+        if(!this.contactArray.isEmpty()){
+            contactList.setSelection(0);
+        }
+
     }
 
 
