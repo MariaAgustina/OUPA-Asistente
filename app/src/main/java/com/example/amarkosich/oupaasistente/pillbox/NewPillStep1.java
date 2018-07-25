@@ -42,6 +42,7 @@ public class NewPillStep1 extends AppCompatActivity implements PillClient{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_pill_step1);
 
+        date = Calendar.getInstance();
         pillService = new PillService();
     }
 
@@ -86,7 +87,7 @@ public class NewPillStep1 extends AppCompatActivity implements PillClient{
 
     public void showDateTimePicker(View view) {
         final Calendar currentDate = Calendar.getInstance();
-        date = Calendar.getInstance();
+;
 
         new DatePickerDialog(NewPillStep1.this , new DatePickerDialog.OnDateSetListener() {
             @Override
