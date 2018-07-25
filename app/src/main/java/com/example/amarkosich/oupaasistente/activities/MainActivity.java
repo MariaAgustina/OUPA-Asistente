@@ -63,27 +63,23 @@ public class MainActivity extends AppCompatActivity {
 
         } else {
             TextView textView = findViewById(R.id.oupa_assisted);
-            textView.setText(oupaAssisted.toString());
-
-            TextView email = findViewById(R.id.oupa_assisted_email);
-            email.setText(oupaAssisted.email);
-
-            TextView switchOupa = findViewById(R.id.switch_oupa);
-            switchOupa.setOnClickListener(new View.OnClickListener() {
+            textView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplicationContext(), OupaSelectorActivity.class);
                     startActivity(intent);
                 }
             });
+            textView.setText(oupaAssisted.toString());
+
+            TextView email = findViewById(R.id.oupa_assisted_email);
+            email.setText(oupaAssisted.email);
         }
     }
 
     private void setupActions() {
 
         LinearLayout contacts = findViewById(R.id.contacts_action);
-
-
 
         if (userSessionManager.isDoctor()){
             contacts.setVisibility(View.GONE);

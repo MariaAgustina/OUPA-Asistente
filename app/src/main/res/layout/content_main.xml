@@ -55,18 +55,6 @@
                     android:text="juan.perez@gmail.com"
                     android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/switch_oupa"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"
-                    android:text="Cambiar"
-                    android:textColor="@color/white"
-                    android:textColorLink="@color/blue"
-                    android:textSize="20sp"
-                    android:textStyle="italic" />
             </RelativeLayout>
 
             <LinearLayout
@@ -147,7 +135,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
-                        android:text="Revisar las medidiciones"
+                        android:text="Revisar las mediciones"
                         android:textSize="16sp" />
 
                 </LinearLayout>
