@@ -6,10 +6,12 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -102,6 +104,7 @@ public class ContactActivity extends AppCompatActivity implements ContactClient 
     @Override
     public void onResponseSuccess(Object responseBody) {
         ArrayList<ContactResponse> contactResponseArrayList = (ArrayList<ContactResponse>) responseBody;
+        contactArray.clear();
 
         for (ContactResponse contactResponse : contactResponseArrayList) {
 
